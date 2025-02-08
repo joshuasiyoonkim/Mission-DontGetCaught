@@ -8,12 +8,6 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] popUps;
     private int popUpIndex;
 
-
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         // Ensure only the pop-up at popUpIndex is active
@@ -22,35 +16,25 @@ public class DialogueManager : MonoBehaviour
             popUps[i].SetActive(i == popUpIndex);
         }
 
-        switch (popUpIndex)
+        if (popUpIndex < popUps.Length)
         {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-                {
-                    popUpIndex++;
-                }
-                break;
-
-
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                popUpIndex++;
+            }
+        }
+        else
+        {
+            // Hide all pop-ups when the last one is done
+            foreach (GameObject popUp in popUps)
+            {
+                popUp.SetActive(false);
+            }
         }
     }
-
-    private IEnumerator WaitAndAdvance(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-    }
-
-
 
     public void AdvancePopUpIndex()
     {
         popUpIndex++;
     }
 }
-
