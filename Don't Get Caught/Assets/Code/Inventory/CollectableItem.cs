@@ -22,8 +22,7 @@ public class CollectibleItem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-                pickupText.text = $"Do you want to collect the {itemName}?";
-                pickupUI.SetActive(true);
+                ShowPickupUI();
             }
 
             if (pickupUI.activeSelf)
@@ -38,6 +37,10 @@ public class CollectibleItem : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            HidePickupUI();
+        }
     }
 
     public void ShowPickupUI()
@@ -46,22 +49,28 @@ public class CollectibleItem : MonoBehaviour
         pickupUI.SetActive(true);
     }
 
+    public void HidePickupUI()
+    {
+        pickupUI.SetActive(false);
+    }
+
     public void CollectItem()
     {
         if (playerInventory != null)
         {
             playerInventory.AddItem(itemName);
             playerInventory.UpdateInventoryUI();
-
         }
+
         Debug.Log($"{itemName} collected!");
-        Destroy(gameObject);
-        pickupUI.SetActive(false);
+        HidePickupUI();
+
+        gameObject.SetActive(false);
+        Destroy(gameObject, 0.1f);
     }
 
     public void CancelPickup()
     {
-        pickupUI.SetActive(false);
-
+        HidePickupUI();
     }
 }

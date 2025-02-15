@@ -7,34 +7,46 @@ public class CameraOpenCollectable : MonoBehaviour
     public float DistanceOpen = 3;
     private CollectibleItem currentItem;
 
-    void Start()
-    {
-    }
-
     void Update()
     {
         RaycastHit hit;
-        bool isItemDetected = false;
+        CollectibleItem newItem = null;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, DistanceOpen))
         {
-            CollectibleItem item = hit.transform.GetComponent<CollectibleItem>();
-            if (item != null)
+            newItem = hit.transform.GetComponent<CollectibleItem>();
+
+            if (newItem != null)
             {
-                isItemDetected = true;
-                item.isLookedAt = true;
-                currentItem = item;
+                if (newItem != currentItem)
+                {
+                    ResetPreviousItem();
+                    currentItem = newItem;
+                    newItem.isLookedAt = true;
+                }
 
                 if (Input.GetKeyDown(KeyCode.K))
                 {
-                    item.ShowPickupUI();
+                    newItem.ShowPickupUI();
                 }
             }
+            else
+            {
+                ResetPreviousItem();
+            }
         }
+        else
+        {
+            ResetPreviousItem();
+        }
+    }
 
-        if (!isItemDetected && currentItem != null)
+    private void ResetPreviousItem()
+    {
+        if (currentItem != null)
         {
             currentItem.isLookedAt = false;
+            currentItem.HidePickupUI();
             currentItem = null;
         }
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5407426694026476645}
   - component: {fileID: 906394972854269839}
   - component: {fileID: 8969639826388389528}
+  - component: {fileID: 8208031531844815452}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -222,6 +223,28 @@ MonoBehaviour:
   openDoor: {fileID: 8300000, guid: 44b63b0db16ce624b97e45ebde0a0971, type: 3}
   closeDoor: {fileID: 8300000, guid: bc37ad25465405a428a26ff0facd9a7b, type: 3}
   interactionText: {fileID: 0}
+--- !u!64 &8208031531844815452
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609791042796503357}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: 670e9ab602834f049b0dac77d6a298d8, type: 3}
 --- !u!1 &3666241669460804419
 GameObject:
   m_ObjectHideFlags: 0
