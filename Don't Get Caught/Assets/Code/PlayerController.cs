@@ -16,23 +16,19 @@ public class PlayerController : MonoBehaviour
     {
         Keyboard keyboardInput = Keyboard.current;
         Mouse mouseInput = Mouse.current;
-        if(keyboardInput != null && mouseInput != null)
+        if (keyboardInput != null && mouseInput != null)
         {
-            if(keyboardInput.eKey.wasPressedThisFrame)
+            if (keyboardInput.eKey.wasPressedThisFrame)
             {
                 Vector2 mousePosition = mouseInput.position.ReadValue();
 
                 Ray ray = Camera.main.ScreenPointToRay(mousePosition);
                 RaycastHit hit;
-                if(Physics.Raycast(ray, out hit, 2f))
+                if (Physics.Raycast(ray, out hit, 2f))
                 {
                     print("Interacted with " + hit.transform.name + " from " + hit.distance + "m.");
 
-                    Door targetDoor = hit.transform.GetComponent<Door>();
-                    if(targetDoor)
-                    {
-                        targetDoor.Interact();
-                    }
+
                 }
             }
         }
