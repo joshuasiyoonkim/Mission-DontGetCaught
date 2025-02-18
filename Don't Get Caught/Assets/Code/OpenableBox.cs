@@ -13,16 +13,32 @@ public class OpenableBox : MonoBehaviour
 
     private void Start()
     {
+        if (interactionText == null) Debug.LogError("interactionText is NULL! Assign it in the Inspector.");
+        if (keyInside == null) Debug.LogError("keyInside is NULL! Assign it in the Inspector.");
+        if (lid == null) Debug.LogError("lid is NULL! Assign it in the Inspector.");
+
         interactionText.gameObject.SetActive(false); // Hide the text initially
         keyInside.SetActive(false); // Hide the key initially
     }
 
     private void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.O) && !isOpen)
-        {
-            StartCoroutine(OpenBox());
-        }
+           if (isPlayerNearby)
+           {
+                Debug.Log("Player is near the box."); // Check if the player is in range
+           }
+
+           if (isPlayerNearby && Input.GetKeyDown(KeyCode.O) && !isOpen)
+           {
+               Debug.Log("O key pressed, opening box..."); // Check if the "O" key press is registered
+               StartCoroutine(OpenBox());
+           }
+
+
+       if (isPlayerNearby && Input.GetKeyDown(KeyCode.O) && !isOpen)
+       {
+           StartCoroutine(OpenBox());
+       }
     }
 
     private IEnumerator OpenBox()
@@ -30,19 +46,8 @@ public class OpenableBox : MonoBehaviour
         isOpen = true;
         interactionText.gameObject.SetActive(false); // Hide text when opening
 
-        float elapsedTime = 0f;
-        float duration = 1f;
-        Quaternion startRotation = lid.localRotation;
-        Quaternion endRotation = Quaternion.Euler(-90f, 0f, 0f); // Open lid
-
-        while (elapsedTime < duration)
-        {
-            lid.localRotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        lid.localRotation = endRotation;
+        yield return new WaitForSeconds(1f); // Simulate opening delay
+        lid.gameObject.SetActive(false); // Make the lid disappear
         keyInside.SetActive(true); // Reveal the key
     }
 
@@ -50,6 +55,7 @@ public class OpenableBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player entered trigger zone.");
             isPlayerNearby = true;
             if (!isOpen)
             {
@@ -63,8 +69,10 @@ public class OpenableBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player left trigger zone.");
             isPlayerNearby = false;
             interactionText.gameObject.SetActive(false);
         }
     }
+
 }
