@@ -6,7 +6,13 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject[] popUps;
+    public GameObject gameOver;
     private int popUpIndex;
+
+    private void Start()
+    {
+        gameOver.SetActive(false);
+    }
 
     void Update()
     {
@@ -36,5 +42,16 @@ public class DialogueManager : MonoBehaviour
     public void AdvancePopUpIndex()
     {
         popUpIndex++;
+    }
+
+    public void showGameOver()
+    {
+        //make sure that the orignal pop ups are gone
+        foreach (GameObject popUp in popUps)
+        {
+            popUp.SetActive(false);
+        }
+        //show the game over screen
+        gameOver.SetActive(true);
     }
 }

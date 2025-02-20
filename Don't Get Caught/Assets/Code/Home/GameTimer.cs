@@ -53,7 +53,7 @@ public class GameTimer : MonoBehaviour
         if (dialogueManager != null)
         {
             Debug.Log("Time's up! You failed.");
-            dialogueManager.AdvancePopUpIndex();
+            dialogueManager.showGameOver();
             gameOver = true; // Mark game as over
         }
     }
