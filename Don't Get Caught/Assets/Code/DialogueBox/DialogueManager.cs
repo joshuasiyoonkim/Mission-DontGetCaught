@@ -9,9 +9,17 @@ public class DialogueManager : MonoBehaviour
     public GameObject gameOver;
     private int popUpIndex;
 
+    public GameTimer gametimer; // Make this public to assign in the Inspector
+
     private void Start()
     {
         gameOver.SetActive(false);
+
+        // Optionally, find the GameTimer component in the scene if not assigned in the Inspector
+        if (gametimer == null)
+        {
+            gametimer = FindObjectOfType<GameTimer>();
+        }
     }
 
     void Update()
@@ -36,6 +44,12 @@ public class DialogueManager : MonoBehaviour
             {
                 popUp.SetActive(false);
             }
+
+            // Start the game timer when the dialogue is finished
+            if (gametimer != null && !gametimer.timerIsRunning)
+            {
+                gametimer.StartTimer();
+            }
         }
     }
 
@@ -46,12 +60,12 @@ public class DialogueManager : MonoBehaviour
 
     public void showGameOver()
     {
-        //make sure that the orignal pop ups are gone
+        // Make sure that the original pop-ups are gone
         foreach (GameObject popUp in popUps)
         {
             popUp.SetActive(false);
         }
-        //show the game over screen
+        // Show the game over screen
         gameOver.SetActive(true);
     }
 }

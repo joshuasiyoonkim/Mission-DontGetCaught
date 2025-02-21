@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
@@ -14,7 +14,6 @@ public class GameTimer : MonoBehaviour
 
     void Start()
     {
-        timerIsRunning = true;
         UpdateTimerDisplay();
     }
 
@@ -39,6 +38,11 @@ public class GameTimer : MonoBehaviour
         {
             RestartGame();
         }
+    }
+
+    public void StartTimer()
+    {
+        timerIsRunning = true;
     }
 
     void UpdateTimerDisplay()
