@@ -5,11 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Garbage.unity
-    guid: 60a3746694db04342acd7f005aa95317
   - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: 18ae61a61a6244cab9e81a35168a3345
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 31108c9433b474128a4a9a3909947607
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

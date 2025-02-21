@@ -1,55 +1,71 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
 public class CollectibleItem : MonoBehaviour
 {
     public string itemName = "Key";
     public GameObject pickupUI;
     public TextMeshProUGUI pickupText;
+    public Transform player;
+    public float detectionDistance = 3f;
+    public BoxWithLid box;  // Reference to the box with the lid
 
     private PlayerInventory playerInventory;
-    public bool isLookedAt = false;
+    public bool isInRange = false;
+    public bool isOpened = false;
 
     private void Start()
     {
         pickupUI.SetActive(false);
         playerInventory = FindObjectOfType<PlayerInventory>();
+
+
     }
 
     private void Update()
     {
-        if (isLookedAt)
-        {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                ShowPickupUI();
-            }
+        float distance = Vector3.Distance(transform.position, player.position);
 
-            if (pickupUI.activeSelf)
+        if (distance <= detectionDistance)
+        {
+            isInRange = true;
+
+            // Only show interaction if the box is opened
+            if (box != null && box.isOpened)
             {
-                if (Input.GetKeyDown(KeyCode.Y))
+                if (Input.GetKeyDown(KeyCode.K))
                 {
-                    CollectItem();
-                }
-                else if (Input.GetKeyDown(KeyCode.N))
-                {
-                    CancelPickup();
+                    ShowPickupUI();
                 }
             }
         }
         else
         {
+            isInRange = false;
             HidePickupUI();
+        }
+
+        if (pickupUI.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                CollectItem();
+            }
+            else if (Input.GetKeyDown(KeyCode.N))
+            {
+                CancelPickup();
+            }
         }
     }
 
-    public void ShowPickupUI()
+    private void ShowPickupUI()
     {
         pickupText.text = $"Do you want to collect the {itemName}?";
         pickupUI.SetActive(true);
     }
 
-    public void HidePickupUI()
+    private void HidePickupUI()
     {
         pickupUI.SetActive(false);
     }
@@ -64,9 +80,7 @@ public class CollectibleItem : MonoBehaviour
 
         Debug.Log($"{itemName} collected!");
         HidePickupUI();
-
         gameObject.SetActive(false);
-        Destroy(gameObject, 0.1f);
     }
 
     public void CancelPickup()

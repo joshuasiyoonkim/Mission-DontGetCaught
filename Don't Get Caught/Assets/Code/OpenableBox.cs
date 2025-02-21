@@ -5,40 +5,29 @@ using TMPro; // Required for TextMeshPro support
 public class OpenableBox : MonoBehaviour
 {
     public Transform lid; // Assign the lid in Unity Inspector
-    public GameObject keyInside; // Assign the hidden key inside the box
     public TextMeshProUGUI interactionText; // UI text for "Press 'O' to Open"
 
     private bool isOpen = false;
     private bool isPlayerNearby = false;
+    private Quaternion lidOpenRotation;
 
     private void Start()
     {
         if (interactionText == null) Debug.LogError("interactionText is NULL! Assign it in the Inspector.");
-        if (keyInside == null) Debug.LogError("keyInside is NULL! Assign it in the Inspector.");
         if (lid == null) Debug.LogError("lid is NULL! Assign it in the Inspector.");
 
         interactionText.gameObject.SetActive(false); // Hide the text initially
-        keyInside.SetActive(false); // Hide the key initially
+
+        // Set the target rotation for the lid when it opens
+        lidOpenRotation = Quaternion.Euler(lid.localEulerAngles.x - 90, lid.localEulerAngles.y, lid.localEulerAngles.z);
     }
 
     private void Update()
     {
-           if (isPlayerNearby)
-           {
-                Debug.Log("Player is near the box."); // Check if the player is in range
-           }
-
-           if (isPlayerNearby && Input.GetKeyDown(KeyCode.O) && !isOpen)
-           {
-               Debug.Log("O key pressed, opening box..."); // Check if the "O" key press is registered
-               StartCoroutine(OpenBox());
-           }
-
-
-       if (isPlayerNearby && Input.GetKeyDown(KeyCode.O) && !isOpen)
-       {
-           StartCoroutine(OpenBox());
-       }
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.O) && !isOpen)
+        {
+            StartCoroutine(OpenBox());
+        }
     }
 
     private IEnumerator OpenBox()
@@ -46,9 +35,19 @@ public class OpenableBox : MonoBehaviour
         isOpen = true;
         interactionText.gameObject.SetActive(false); // Hide text when opening
 
-        yield return new WaitForSeconds(1f); // Simulate opening delay
-        lid.gameObject.SetActive(false); // Make the lid disappear
-        keyInside.SetActive(true); // Reveal the key
+        // Smoothly rotate the lid to the open position
+        float elapsedTime = 0f;
+        float duration = 1f; // Duration of the opening animation
+        Quaternion initialRotation = lid.localRotation;
+
+        while (elapsedTime < duration)
+        {
+            lid.localRotation = Quaternion.Slerp(initialRotation, lidOpenRotation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        lid.localRotation = lidOpenRotation; // Ensure the lid is exactly in the open position
     }
 
     private void OnTriggerEnter(Collider other)
@@ -74,5 +73,4 @@ public class OpenableBox : MonoBehaviour
             interactionText.gameObject.SetActive(false);
         }
     }
-
 }
