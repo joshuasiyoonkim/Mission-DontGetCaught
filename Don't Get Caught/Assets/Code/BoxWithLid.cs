@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoxWithLid : MonoBehaviour
 {
     public GameObject lid;
-    public GameObject interactionText;
     public Transform player;
     public float detectionDistance = 3f;
     public bool isOpened = false;
@@ -13,10 +12,7 @@ public class BoxWithLid : MonoBehaviour
 
     void Start()
     {
-        if (interactionText != null)
-        {
-            interactionText.SetActive(false);
-        }
+
     }
 
     void Update()
@@ -27,18 +23,14 @@ public class BoxWithLid : MonoBehaviour
 
         if (distance <= detectionDistance)
         {
-            interactionText.SetActive(true);
-            interactionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Press 'O' to open the box";
+
 
             if (Input.GetKeyDown(KeyCode.O))
             {
                 OpenBox();
             }
         }
-        else
-        {
-            interactionText.SetActive(false);
-        }
+
     }
 
     void OpenBox()
@@ -48,10 +40,7 @@ public class BoxWithLid : MonoBehaviour
             lid.SetActive(false);
         }
 
-        if (interactionText != null)
-        {
-            interactionText.SetActive(false);
-        }
+
 
         isOpened = true;
     }
