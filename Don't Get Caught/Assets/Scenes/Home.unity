@@ -493,10 +493,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lid: {fileID: 876252111}
-  interactionText: {fileID: 950368550}
   player: {fileID: 1601713386434707584}
   detectionDistance: 3
   isOpened: 0
+  text: {fileID: 950368550}
 --- !u!64 &349836256
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3520,10 +3520,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lid: {fileID: 4386749232468186650}
-  interactionText: {fileID: 950368550}
   player: {fileID: 1601713386434707584}
   detectionDistance: 3
   isOpened: 0
+  text: {fileID: 950368550}
 --- !u!65 &1716833402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4026,10 +4026,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lid: {fileID: 1068271428}
-  interactionText: {fileID: 950368550}
   player: {fileID: 1601713386434707584}
   detectionDistance: 3
   isOpened: 0
+  text: {fileID: 950368550}
 --- !u!64 &2047185973
 MeshCollider:
   m_ObjectHideFlags: 0

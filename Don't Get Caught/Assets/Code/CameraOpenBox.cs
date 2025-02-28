@@ -16,6 +16,7 @@ public class CameraOpenBox : MonoBehaviour
 
             if (box != null)
             {
+                Debug.Log("testing");
                 text.SetActive(true);
 
                 if (Input.GetKeyDown(KeyCode.O))

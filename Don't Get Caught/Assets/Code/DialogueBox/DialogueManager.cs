@@ -5,11 +5,19 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    //this is to keep track of dialogue to make sure user finishes
+    public static bool isDialogueFinished = false;
+
     public GameObject[] popUps;
     public GameObject gameOver;
     private int popUpIndex;
 
     public GameTimer gametimer; // Make this public to assign in the Inspector
+
+    private void Awake()
+    {
+        isDialogueFinished = false;
+    }
 
     private void Start()
     {
@@ -50,6 +58,7 @@ public class DialogueManager : MonoBehaviour
             {
                 gametimer.StartTimer();
             }
+            isDialogueFinished = true;
         }
     }
 
