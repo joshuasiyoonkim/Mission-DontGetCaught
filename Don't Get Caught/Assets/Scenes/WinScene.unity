@@ -4353,10 +4353,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lid: {fileID: 2085583621}
-  interactionText: {fileID: 1328602730}
   player: {fileID: 0}
   detectionDistance: 3
   isOpened: 0
+  text: {fileID: 0}
 --- !u!64 &1361401305
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5337,6 +5337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   homeSceneName: Home
+  newSceneName: Home with full house
 --- !u!4 &1452738422
 Transform:
   m_ObjectHideFlags: 0

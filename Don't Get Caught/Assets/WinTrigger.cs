@@ -7,6 +7,8 @@ public class WinTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("ran into player OOAAAOAOOAOAOAOOA");
+
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene(winSceneName);
