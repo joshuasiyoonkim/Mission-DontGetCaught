@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class WinTrigger : MonoBehaviour
 {
     public string winSceneName = "WinScene";
+    public string secondRoom = "harris room(rename)";
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +12,7 @@ public class WinTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(winSceneName);
+            SceneManager.LoadScene(secondRoom);
         }
     }
 }
