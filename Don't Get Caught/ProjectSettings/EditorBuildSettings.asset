@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Home with full house.unity
     guid: 2b1f86c7a559a4c348886bce4c6a4c95
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/harris room(edited).unity
     guid: 3ce14967c48944c95b3bf631be2ea649
   - enabled: 0
