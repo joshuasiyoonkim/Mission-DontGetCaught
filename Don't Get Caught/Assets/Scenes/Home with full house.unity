@@ -3205,8 +3205,8 @@ Transform:
   m_GameObject: {fileID: 406539429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.67, y: 1.73, z: -1.438}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.174, y: 2.42, z: -1.9741}
+  m_LocalScale: {x: 1.3801, y: 1.3801, z: 1.3801}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1216611045}
@@ -3906,6 +3906,14 @@ PrefabInstance:
       propertyPath: m_text
       value: 'You failed to exit the room! Game Over! '
       objectReference: {fileID: 0}
+    - target: {fileID: 6120719259091081365, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6120719259091081365, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 6732629418682245421, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
       propertyPath: m_text
       value: R to restart
@@ -5008,8 +5016,8 @@ Transform:
   m_GameObject: {fileID: 626227090}
   serializedVersion: 2
   m_LocalRotation: {x: -0.29601026, y: -0.055409648, z: 0.017203098, w: -0.9534211}
-  m_LocalPosition: {x: -3.0785027, y: 7.7893877, z: -17.672794}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.3576, y: 10.7823, z: -24.379}
+  m_LocalScale: {x: 1.3801, y: 1.3801, z: 1.3801}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5685,8 +5693,8 @@ Transform:
   m_GameObject: {fileID: 746238531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1091, y: 0.03240013, z: 0.010481}
+  m_LocalScale: {x: 1.3801, y: 1.3801, z: 1.3801}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6197,6 +6205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winSceneName: harris room(rename)
+  secondRoom: harris room(rename)
 --- !u!65 &809097733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7654,8 +7663,8 @@ Transform:
   m_GameObject: {fileID: 1038645533}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: 2.18, z: 3.81}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.7413, y: 3.0410001, z: 5.2685}
+  m_LocalScale: {x: 1.3801, y: 1.3801, z: 1.3801}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1748632252}
@@ -10816,8 +10825,8 @@ Transform:
   m_GameObject: {fileID: 1396502151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.11, y: 1.68, z: -4.302}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.7812, y: 2.351, z: -5.9266}
+  m_LocalScale: {x: 1.3801, y: 1.3801, z: 1.3801}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 33280435}
@@ -11261,16 +11270,28 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4000013233801914, guid: ae43829461fd59d4c9385c3225d73046, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3801
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233801914, guid: ae43829461fd59d4c9385c3225d73046, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3801
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233801914, guid: ae43829461fd59d4c9385c3225d73046, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3801
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013233801914, guid: ae43829461fd59d4c9385c3225d73046, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.75
+      value: 0.92595
       objectReference: {fileID: 0}
     - target: {fileID: 4000013233801914, guid: ae43829461fd59d4c9385c3225d73046, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.27
+      value: 0.40507013
       objectReference: {fileID: 0}
     - target: {fileID: 4000013233801914, guid: ae43829461fd59d4c9385c3225d73046, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.03
+      value: -1.411
       objectReference: {fileID: 0}
     - target: {fileID: 4000013233801914, guid: ae43829461fd59d4c9385c3225d73046, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12672,6 +12693,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "Well, not all door will open. \n\nSo be fast and find out a way out.\n\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 4311556683306410993, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4311556683306410993, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4837377324963058194, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
       propertyPath: m_Name
       value: DialogueBox
@@ -12725,10 +12754,26 @@ PrefabInstance:
       value: "You wake up in a locked house. \n\nTo escape, you need to find a key
         \nto open the door.\n\nYou have ONE minute."
       objectReference: {fileID: 0}
+    - target: {fileID: 6120719259091081365, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6120719259091081365, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7727574263340820684, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
       propertyPath: m_text
       value: "Tip: \n\nTo claim an item, click \"k\"\nTo open the door, click \"e\"\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 7727574263340820684, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7727574263340820684, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17277,8 +17322,8 @@ Transform:
   m_GameObject: {fileID: 2919233065259363280}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1091, y: 0.03240013, z: 0.010481}
+  m_LocalScale: {x: 1.3801, y: 1.3801, z: 1.3801}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
