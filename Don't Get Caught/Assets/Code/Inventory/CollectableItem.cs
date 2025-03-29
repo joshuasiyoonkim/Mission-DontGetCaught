@@ -11,14 +11,12 @@ public class CollectibleItem : MonoBehaviour
     public float detectionDistance = 3f;
     public BoxWithLid box;  // Reference to the box with the lid
 
-    private PlayerInventory playerInventory;
     public bool isInRange = false;
     public bool isOpened = false;
 
     private void Start()
     {
         pickupUI.SetActive(false);
-        playerInventory = FindObjectOfType<PlayerInventory>();
 
 
     }
@@ -72,11 +70,8 @@ public class CollectibleItem : MonoBehaviour
 
     public void CollectItem()
     {
-        if (playerInventory != null)
-        {
-            playerInventory.AddItem(itemName);
-            playerInventory.UpdateInventoryUI();
-        }
+        PlayerInventory.instance.AddItem(itemName);
+        PlayerInventory.instance.UpdateInventoryUI();
 
         Debug.Log($"{itemName} collected!");
         HidePickupUI();

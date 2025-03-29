@@ -5,8 +5,23 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private Dictionary<string, int> items = new Dictionary<string, int>();
+    public static PlayerInventory instance;
+
+    public Dictionary<string, int> items = new Dictionary<string, int>();
     public TextMeshProUGUI inventoryUI;
+
+    public void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // Persist across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Avoid duplicate instances
+        }
+    }
 
     public void AddItem(string itemName)
     {

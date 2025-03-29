@@ -3,11 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class DialogueSequence
+{
+    public string sequenceName; // Optional: helps identify it
+    public GameObject[] popUps;
+}
+
 public class DialogueManager : MonoBehaviour
 {
     //this is to keep track of dialogue to make sure user finishes
     public static bool isDialogueFinished = false;
 
+    public List<DialogueSequence> dialogueQueue = new List<DialogueSequence>();
     public GameObject[] popUps;
     public GameObject gameOver;
     private int popUpIndex;
@@ -28,11 +36,18 @@ public class DialogueManager : MonoBehaviour
         {
             gametimer = FindObjectOfType<GameTimer>();
         }
+
+        if (dialogueQueue.Count > 0)
+        {
+            StartDialogueSequence(0);
+        }
     }
 
     void Update()
     {
-        // Ensure only the pop-up at popUpIndex is active
+        if (popUps == null) return;
+
+        // Show only the current pop-up
         for (int i = 0; i < popUps.Length; i++)
         {
             popUps[i].SetActive(i == popUpIndex);
@@ -47,18 +62,25 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            // Hide all pop-ups when the last one is done
+            // End of current sequence
             foreach (GameObject popUp in popUps)
             {
                 popUp.SetActive(false);
             }
 
-            // Start the game timer when the dialogue is finished
-            if (gametimer != null && !gametimer.timerIsRunning)
+            popUps = null;
+            popUpIndex = 0;
+
+            // Only set finished and start timer after the *first* dialogue
+            if (!isDialogueFinished)
             {
-                gametimer.StartTimer();
+                isDialogueFinished = true;
+
+                if (gametimer != null && !gametimer.timerIsRunning)
+                {
+                    gametimer.StartTimer();
+                }
             }
-            isDialogueFinished = true;
         }
     }
 
@@ -76,5 +98,18 @@ public class DialogueManager : MonoBehaviour
         }
         // Show the game over screen
         gameOver.SetActive(true);
+    }
+
+    public void StartDialogueSequence(int index)
+    {
+        if (index < 0 || index >= dialogueQueue.Count)
+        {
+            Debug.LogWarning("Invalid dialogue index!");
+            return;
+        }
+
+        popUps = dialogueQueue[index].popUps;
+        popUpIndex = 0;
+        isDialogueFinished = false;
     }
 }

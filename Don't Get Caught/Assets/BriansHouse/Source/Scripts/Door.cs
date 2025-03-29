@@ -22,11 +22,14 @@ public class Door : MonoBehaviour {
 	Quaternion doorOpen = Quaternion.identity;
 	Quaternion doorClosed = Quaternion.identity;
 
+	DialogueManager dialogueManager;
+
 	bool doorStatus = false;
 	[HideInInspector]
 	public bool playerInRange = false;
 
 	void Start() {
+		dialogueManager = FindObjectOfType<DialogueManager>();
 		if (this.gameObject.isStatic) {
 			Debug.Log ("This door has been set to static and won't be openable. Doorscript has been removed.");
 			Destroy (this);
@@ -44,13 +47,29 @@ public class Door : MonoBehaviour {
 
 		if (playerInRange) {
 			if (Input.GetKeyDown (KeyCode.E)) {
-				if (doorStatus) {
-					StartCoroutine (this.moveDoor (doorClosed));
-					if (doorCloseSound != null)					AudioSource.PlayClipAtPoint (doorCloseSound, this.transform.position);
-				} else {
-					StartCoroutine (this.moveDoor (doorOpen));
-					if (doorOpenSound != null)					AudioSource.PlayClipAtPoint (doorOpenSound, this.transform.position);
-				}
+				if(PlayerInventory.instance.items.ContainsKey("Key"))
+                {
+					if (doorStatus)
+					{
+						StartCoroutine(this.moveDoor(doorClosed));
+						if (doorCloseSound != null) AudioSource.PlayClipAtPoint(doorCloseSound, this.transform.position);
+					}
+					else
+					{
+						StartCoroutine(this.moveDoor(doorOpen));
+						if (doorOpenSound != null) AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+					}
+				} else
+                {
+					if(doorOpenSound != null && dialogueManager != null)
+                    {
+						AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+						Debug.Log("door is locked, get a key");
+						dialogueManager.StartDialogueSequence(1);
+                    }
+
+                }
+
 			}
 		}
 
