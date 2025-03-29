@@ -3,32 +3,35 @@ using UnityEngine.SceneManagement;
 
 public class WinSceneManager : MonoBehaviour
 {
-    public string homeSceneName = "Home";
+    public string currentSceneName;
     public string newSceneName;
 
-    void Update()
+    private void Start()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            if(newSceneName != null)
-            {
-                Debug.Log("entering house");
-                LoadNewScene();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadHomeScene();
-        }
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
-    void ReloadHomeScene()
+    void ReloadCurrentScene()
     {
-        SceneManager.LoadScene(homeSceneName);
+        SceneManager.LoadScene(currentSceneName);
     }
 
     void LoadNewScene()
     {
         SceneManager.LoadScene(newSceneName);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(newSceneName == null)
+        {
+            Debug.Log("set a new scene name");
+            return;
+        }
+
+        if(other.CompareTag("Player"))
+        {
+            LoadNewScene();
+        }
     }
 }
