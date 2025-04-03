@@ -17,59 +17,52 @@ public class NPC : MonoBehaviour
         //State Tracking
         int patrolIndex;
         public float chaseDistance;
+        private bool isChasing = false;
 
-        // Methods
-        void Start()
+    // Methods
+    void Start()
         {
             navAgent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
         }
 
-        // Update is called once per frame
-        void Update()
+    void Update()
+    {
+        // Distance to priority target
+        float priorityTargetDistance = priorityTarget ? Vector3.Distance(transform.position, priorityTarget.position) : Mathf.Infinity;
+
+        // --- CHASE LOGIC ---
+        if (priorityTarget && priorityTargetDistance <= chaseDistance)
         {
-            if (patrolRoute)
-            {
-                //Which patrol point is active?
-                target = patrolRoute.GetChild(patrolIndex);
-
-                //How far is the patrol point?
-                float distance = Vector3.Distance(transform.position, target.position);
-                print("Distance: " + distance);
-
-                //Target the next point when we are close enough
-                if (distance <= 7f)
-                {
-                    patrolIndex++;
-                    if (patrolIndex >= patrolRoute.childCount)
-                    {
-                        patrolIndex = 0;
-                    }
-                }
-            }
-
-            if (priorityTarget)
-            {
-                //Keep track of our priority target
-                float priorityTargetDistance = Vector3.Distance(transform.position, priorityTarget.position);
-
-                //If the priority target gets too close, follow it and highlight ourselves
-                if (priorityTargetDistance <= chaseDistance)
-                {
-                    target = priorityTarget;
-                    //    GetComponent<Renderer>().material.color = Color.red;
-                    //}
-                    //else
-                    //{
-                    //    GetComponent<Renderer>().material.color = Color.white;
-                }
-            }
-
-            if (target)
-            {
-                navAgent.SetDestination(target.position);
-            }
-
-            animator.SetFloat("Velocity", navAgent.velocity.magnitude);
+            isChasing = true;
+            target = priorityTarget;
         }
+        else if (priorityTarget && priorityTargetDistance > chaseDistance)
+        {
+            // Stop chasing and return to patrol
+            isChasing = false;
+            target = null;
+        }
+
+        // --- PATROL LOGIC ---
+        if (!isChasing && patrolRoute)
+        {
+            if (!target) target = patrolRoute.GetChild(patrolIndex);
+
+            float distance = Vector3.Distance(transform.position, target.position);
+            if (distance <= 1f)
+            {
+                patrolIndex = (patrolIndex + 1) % patrolRoute.childCount;
+                target = patrolRoute.GetChild(patrolIndex);
+            }
+        }
+
+        // --- NAVIGATION & ANIMATION ---
+        if (target)
+        {
+            navAgent.SetDestination(target.position);
+        }
+
+        animator.SetFloat("Velocity", navAgent.velocity.magnitude);
+    }
 }
