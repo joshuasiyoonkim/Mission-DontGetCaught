@@ -4,27 +4,27 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class NPC : MonoBehaviour
-    {
-        //outlets
-        NavMeshAgent navAgent;
-        Animator animator;
+{
+    //outlets
+    NavMeshAgent navAgent;
+    Animator animator;
 
-        //Configuration
-        public Transform priorityTarget;
-        public Transform target;
-        public Transform patrolRoute;
+    //Configuration
+    public Transform priorityTarget;
+    public Transform target;
+    public Transform patrolRoute;
 
-        //State Tracking
-        int patrolIndex;
-        public float chaseDistance;
-        private bool isChasing = false;
+    //State Tracking
+    int patrolIndex;
+    public float chaseDistance;
+    private bool isChasing = false;
 
     // Methods
     void Start()
-        {
-            navAgent = GetComponent<NavMeshAgent>();
-            animator = GetComponent<Animator>();
-        }
+    {
+        navAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -50,7 +50,7 @@ public class NPC : MonoBehaviour
             if (!target) target = patrolRoute.GetChild(patrolIndex);
 
             float distance = Vector3.Distance(transform.position, target.position);
-            if (distance <= 1f)
+            if (distance <= 3f)
             {
                 patrolIndex = (patrolIndex + 1) % patrolRoute.childCount;
                 target = patrolRoute.GetChild(patrolIndex);
