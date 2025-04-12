@@ -15,6 +15,11 @@ public class CollectUpClose : MonoBehaviour
 
     private PlayerInventory playerInventory;
 
+    private void Start()
+    {
+        playerInventory = FindObjectOfType<PlayerInventory>();
+    }
+
     private void Update()
     {
         Mouse mouseInput = Mouse.current;
@@ -23,6 +28,10 @@ public class CollectUpClose : MonoBehaviour
 
         if (distanceToObject <= distance)
         {
+            if(!DialogueManager.isDialogueFinished)
+            {
+                return;
+            }
             isInRange = true;
             ShowPickupUI();
         }
@@ -41,7 +50,11 @@ public class CollectUpClose : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, distance))
         {
-            if (Input.GetKeyDown(KeyCode.K))
+            if(!DialogueManager.isDialogueFinished)
+            {
+                return;
+            }
+            if (hit.collider.CompareTag("Collectable") && Input.GetKeyDown(KeyCode.E))
             {
                 CollectItem();
             }
@@ -53,7 +66,7 @@ public class CollectUpClose : MonoBehaviour
         if(itemName == null) {
             itemName = "item";
         }
-        pickupText.text = $"Do you want to collect the {itemName}?";
+        pickupText.text = $"Press 'E' to collect {itemName}?";
         pickupUI.SetActive(true);
     }
 

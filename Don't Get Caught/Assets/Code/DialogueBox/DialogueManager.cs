@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class DialogueSequence
@@ -21,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     private int popUpIndex;
 
     public GameTimer gametimer; // Make this public to assign in the Inspector
+    public bool isGameOver = false;
 
     private void Awake()
     {
@@ -45,6 +47,13 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
+        if (isGameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
         if (popUps == null) return;
 
         // Show only the current pop-up
@@ -91,13 +100,17 @@ public class DialogueManager : MonoBehaviour
 
     public void showGameOver()
     {
-        // Make sure that the original pop-ups are gone
-        foreach (GameObject popUp in popUps)
+        if(popUps != null)
         {
-            popUp.SetActive(false);
+            // Make sure that the original pop-ups are gone
+            foreach (GameObject popUp in popUps)
+            {
+                popUp.SetActive(false);
+            }
         }
         // Show the game over screen
         gameOver.SetActive(true);
+        isGameOver = true;
     }
 
     public void StartDialogueSequence(int index)
@@ -107,9 +120,17 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Invalid dialogue index!");
             return;
         }
+        //if it is still showing the first dialogue just return
+        if(!isDialogueFinished && index != 0)
+        {
+            return;
+        }
+
 
         popUps = dialogueQueue[index].popUps;
         popUpIndex = 0;
         isDialogueFinished = false;
     }
+
+
 }

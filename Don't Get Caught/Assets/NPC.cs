@@ -18,6 +18,7 @@ public class NPC : MonoBehaviour
     int patrolIndex;
     public float chaseDistance;
     private bool isChasing = false;
+    public DialogueManager dialogueManager;
 
     // Methods
     void Start()
@@ -65,4 +66,13 @@ public class NPC : MonoBehaviour
 
         animator.SetFloat("Velocity", navAgent.velocity.magnitude);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            dialogueManager.showGameOver();
+        }
+    }
+
 }

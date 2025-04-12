@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(MeshFilter))]
@@ -47,27 +48,59 @@ public class Door : MonoBehaviour {
 
 		if (playerInRange) {
 			if (Input.GetKeyDown (KeyCode.E)) {
-				if(PlayerInventory.instance.items.ContainsKey("Key"))
+				//check what scene it is
+				//if home scene, only require key
+				//if maze scene, require 2 books
+				string currentScene = SceneManager.GetActiveScene().name;
+
+				if(currentScene.Equals("Home with full house"))
                 {
-					if (doorStatus)
+					if (PlayerInventory.instance.items.ContainsKey("Key"))
 					{
-						StartCoroutine(this.moveDoor(doorClosed));
-						if (doorCloseSound != null) AudioSource.PlayClipAtPoint(doorCloseSound, this.transform.position);
+						if (doorStatus)
+						{
+							StartCoroutine(this.moveDoor(doorClosed));
+							if (doorCloseSound != null) AudioSource.PlayClipAtPoint(doorCloseSound, this.transform.position);
+						}
+						else
+						{
+							StartCoroutine(this.moveDoor(doorOpen));
+							if (doorOpenSound != null) AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+						}
 					}
 					else
 					{
-						StartCoroutine(this.moveDoor(doorOpen));
-						if (doorOpenSound != null) AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+						if (doorOpenSound != null && dialogueManager != null)
+						{
+							AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+							Debug.Log("door is locked, get a key");
+							dialogueManager.StartDialogueSequence(1);
+						}
 					}
-				} else
+				} else if(currentScene.Equals("MazeScene"))
                 {
-					if(doorOpenSound != null && dialogueManager != null)
+					if(PlayerInventory.instance.items.TryGetValue("Book", out int count) && count == 2)
                     {
-						AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
-						Debug.Log("door is locked, get a key");
-						dialogueManager.StartDialogueSequence(1);
-                    }
-
+						if (doorStatus)
+						{
+							StartCoroutine(this.moveDoor(doorClosed));
+							if (doorCloseSound != null) AudioSource.PlayClipAtPoint(doorCloseSound, this.transform.position);
+						}
+						else
+						{
+							StartCoroutine(this.moveDoor(doorOpen));
+							if (doorOpenSound != null) AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+						}
+					}
+					else
+					{
+						if (doorOpenSound != null && dialogueManager != null)
+						{
+							AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+							Debug.Log("you need 2 books to open this door");
+							dialogueManager.StartDialogueSequence(1);
+						}
+					}
                 }
 
 			}
