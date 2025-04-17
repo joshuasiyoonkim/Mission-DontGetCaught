@@ -54,7 +54,7 @@ public class CollectUpClose : MonoBehaviour
             {
                 return;
             }
-            if (hit.collider.CompareTag("Collectable") && Input.GetKeyDown(KeyCode.E))
+            if (hit.collider.CompareTag("Collectable") && hit.collider.gameObject == this.gameObject && Input.GetKeyDown(KeyCode.E))
             {
                 CollectItem();
             }
