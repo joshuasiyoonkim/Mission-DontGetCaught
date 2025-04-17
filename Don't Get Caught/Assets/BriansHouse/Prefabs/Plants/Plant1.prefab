@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3397996}
   - component: {fileID: 2317932}
   - component: {fileID: 6596894}
+  - component: {fileID: 8396431672895978177}
   m_Layer: 0
   m_Name: Plant1
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 13.795048, y: 13.795048, z: 13.795048}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,3 +107,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2246035, y: 0.22775799, z: 0.22956651}
   m_Center: {x: -0.0046402365, y: 0.113878995, z: 0.002521634}
+--- !u!208 &8396431672895978177
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139884}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25500003, y: 0.596, z: 0.25100002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.027, y: 0.596, z: 0.016}
+  m_TimeToStationary: 0.5
