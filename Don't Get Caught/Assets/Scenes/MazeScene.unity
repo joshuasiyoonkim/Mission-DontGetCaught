@@ -36655,7 +36655,7 @@ GameObject:
   - component: {fileID: 1573583023}
   - component: {fileID: 1573583022}
   - component: {fileID: 1573583021}
-  - component: {fileID: 1573583020}
+  - component: {fileID: 1573583025}
   m_Layer: 0
   m_Name: DoorBarrier
   m_TagString: Untagged
@@ -36663,20 +36663,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1573583020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573583019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6b3bc060994456b9c77238814ae79b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentSceneName: 
-  newSceneName: Home with full house
 --- !u!65 &1573583021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36762,6 +36748,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1573583025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573583019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b81424366a724682874e24665be5a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelType: 0
 --- !u!43 &1664134067
 Mesh:
   m_ObjectHideFlags: 0
@@ -37091,6 +37090,10 @@ PrefabInstance:
     - target: {fileID: 4311556683306410993, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
       propertyPath: m_text
       value: 'You need to find the doorway out of this maze!
+
+
+        But you might
+        have to find something else on the way!
 
 
 

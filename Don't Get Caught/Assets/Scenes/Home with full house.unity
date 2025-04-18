@@ -1338,7 +1338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSceneName: 
-  newSceneName: Living Room
+  newSceneName: MazeScene
 --- !u!65 &201990375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3167,6 +3167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18495fbce59b141e39608a7840b04268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recentRoom: 
   spawnPoints:
   - roomName: MazeScene
     spawnPoint: {fileID: 800401295}
