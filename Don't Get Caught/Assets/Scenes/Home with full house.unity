@@ -1337,11 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6b3bc060994456b9c77238814ae79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   doorType: 1
-=======
-  doorType: 0
->>>>>>> Stashed changes
 --- !u!65 &201990375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4118,51 +4114,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8249e782f2a46de41abca2a75b2de438, type: 3}
---- !u!1 &1120920107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1120920109}
-  - component: {fileID: 1120920108}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1120920108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120920107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a424a2cddba420099a4977e196b0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 841597928}
---- !u!4 &1120920109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120920107}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.513218, y: 25.41127, z: 11.002615}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146091045 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010397430430, guid: b0a68b5b2eb6e39439b47f2b42a73fe6, type: 3}
@@ -9521,4 +9472,3 @@ SceneRoots:
   - {fileID: 1042765919}
   - {fileID: 336533305}
   - {fileID: 718178336}
-  - {fileID: 1120920109}

@@ -13,8 +13,11 @@ public class CollectUpClose : MonoBehaviour
     public GameObject pickupUI;
     public TextMeshProUGUI pickupText;
 
+    private PlayerInventory playerInventory;
+
     private void Start()
     {
+        playerInventory = FindObjectOfType<PlayerInventory>();
         pickupUI.SetActive(false);
     }
 
@@ -76,9 +79,11 @@ public class CollectUpClose : MonoBehaviour
 
     public void CollectItem()
     {
-        PlayerInventory.instance.AddItem(itemName);
-        PlayerInventory.instance.UpdateInventoryUI();
- 
+        if (playerInventory != null)
+        {
+            playerInventory.AddItem(itemName);
+            playerInventory.UpdateInventoryUI();
+        }
 
         Debug.Log($"{itemName} collected!");
         HidePickupUI();
