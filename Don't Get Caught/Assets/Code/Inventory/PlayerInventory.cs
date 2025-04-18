@@ -21,6 +21,7 @@ public class PlayerInventory : MonoBehaviour
         {
             Destroy(gameObject); // Avoid duplicate instances
         }
+        UpdateInventoryUI();
     }
 
     public void AddItem(string itemName)
@@ -90,4 +91,18 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log("resetting inventory");
         items.Clear();
     }
+
+    public void RemoveTwoBooks()
+    {
+        RemoveItem("Book");
+        RemoveItem("Book");
+        UpdateInventoryUI();
+    }
+
+    public void SetInventoryUI(TextMeshProUGUI ui)
+    {
+        inventoryUI = ui;
+        UpdateInventoryUI();
+    }
+
 }

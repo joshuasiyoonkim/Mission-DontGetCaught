@@ -61,6 +61,11 @@ public class GameManager : MonoBehaviour
         // whenever we enter Home, snap the player to the correct door
         if (scene.name == homeSceneName)
             SpawnPlayerAtDoor(lastScene);
+
+
+        Debug.Log("scene loaded, updating the player's inventory");
+        PlayerInventory.instance.UpdateInventoryUI();
+        PlayerInventory.instance.PrintInventory();
     }
 
     private void SpawnPlayerAtDoor(string fromScene)
@@ -83,6 +88,7 @@ public class GameManager : MonoBehaviour
     public void CompleteMaze()
     {
         mazeCompleted = true;
+        PlayerInventory.instance.RemoveTwoBooks();
         TransitionTo(homeSceneName);
     }
 
@@ -90,6 +96,7 @@ public class GameManager : MonoBehaviour
     public void CompleteOutdoor()
     {
         outdoorCompleted = true;
+        PlayerInventory.instance.RemoveTwoBooks();
         TransitionTo(homeSceneName);
     }
 
