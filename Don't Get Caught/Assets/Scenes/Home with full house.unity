@@ -536,8 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6b3bc060994456b9c77238814ae79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSceneName: Home with full house
-  newSceneName: harris room(edited)
+  doorType: 0
 --- !u!1 &63282514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,8 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6b3bc060994456b9c77238814ae79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSceneName: 
-  newSceneName: MazeScene
+  doorType: 1
 --- !u!65 &201990375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1356,7 +1354,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -3170,10 +3168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18495fbce59b141e39608a7840b04268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recentRoom: 
+  homeSceneName: Home with full house
+  mazeSceneName: MazeScene
+  outdoorSceneName: OutdoorScene
+  tunnelSceneName: TunnelScene
   spawnPoints:
-  - roomName: MazeScene
+  - fromScene: 
     spawnPoint: {fileID: 800401295}
+  mazeCompleted: 0
+  outdoorCompleted: 0
 --- !u!4 &718178336
 Transform:
   m_ObjectHideFlags: 0
@@ -3786,6 +3789,112 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000012483342118, guid: 7d9870da90c4d87409e39fbc3c9e4f5b, type: 3}
   m_PrefabInstance: {fileID: 1312685108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &978059883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978059885}
+  - component: {fileID: 978059884}
+  m_Layer: 0
+  m_Name: barrier2 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &978059884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978059883}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &978059885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978059883}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.042, y: 2.48, z: 7.754}
+  m_LocalScale: {x: 1, y: 3.1255987, z: 2.3580148}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &991222360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 991222362}
+  - component: {fileID: 991222361}
+  m_Layer: 0
+  m_Name: barrier1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &991222361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991222360}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &991222362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991222360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.184, y: 2.48, z: 3.92}
+  m_LocalScale: {x: 1, y: 3.1255987, z: 2.3580148}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038645533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,8 +3977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6b3bc060994456b9c77238814ae79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSceneName: 
-  newSceneName: MazeScene
+  doorType: 0
 --- !u!65 &1042765916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9358,7 +9466,9 @@ SceneRoots:
   - {fileID: 1834647174}
   - {fileID: 272193678}
   - {fileID: 49989205}
+  - {fileID: 991222362}
   - {fileID: 201990378}
+  - {fileID: 978059885}
   - {fileID: 1042765919}
   - {fileID: 336533305}
   - {fileID: 718178336}

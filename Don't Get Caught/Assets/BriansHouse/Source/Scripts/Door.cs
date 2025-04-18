@@ -102,6 +102,31 @@ public class Door : MonoBehaviour {
 						}
 					}
                 }
+				else if(currentScene.Equals("OutdoorScene"))
+                {
+					if(PlayerInventory.instance.items.TryGetValue("Book", out int count) && count == 2)
+                    {
+						if (doorStatus)
+						{
+							StartCoroutine(this.moveDoor(doorClosed));
+							if (doorCloseSound != null) AudioSource.PlayClipAtPoint(doorCloseSound, this.transform.position);
+						}
+						else
+						{
+							StartCoroutine(this.moveDoor(doorOpen));
+							if (doorOpenSound != null) AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+						}
+					}
+					else
+					{
+						if (doorOpenSound != null && dialogueManager != null)
+						{
+							AudioSource.PlayClipAtPoint(doorOpenSound, this.transform.position);
+							Debug.Log("you need 2 books to open this door");
+							dialogueManager.StartDialogueSequence(1);
+						}
+					}
+                }
 
 			}
 		}
