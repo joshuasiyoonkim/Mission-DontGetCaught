@@ -19,10 +19,12 @@ public class DialogueManager : MonoBehaviour
     public List<DialogueSequence> dialogueQueue = new List<DialogueSequence>();
     public GameObject[] popUps;
     public GameObject gameOver;
+    public GameObject pauseScreen;
     private int popUpIndex;
 
     public GameTimer gametimer; // Make this public to assign in the Inspector
     public bool isGameOver = false;
+    public bool gamePaused = false;
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         gameOver.SetActive(false);
+        pauseScreen.SetActive(false);
 
         // Optionally, find the GameTimer component in the scene if not assigned in the Inspector
         if (gametimer == null)
@@ -54,6 +57,27 @@ public class DialogueManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+
+        if(gamePaused)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                ResumeGame();
+            }
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                QuitGame();
+            }
+        }
+
+        if(!gamePaused)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape) && isDialogueFinished)
+            {
+                PauseGame();
+            }
+        }
+
         if (popUps == null) return;
 
         // Show only the current pop-up
@@ -132,5 +156,40 @@ public class DialogueManager : MonoBehaviour
         isDialogueFinished = false;
     }
 
+    public void PauseGame()
+    {
+        gamePaused = true;
+
+        if (popUps != null)
+        {
+            // Make sure that the original pop-ups are gone
+            foreach (GameObject popUp in popUps)
+            {
+                popUp.SetActive(false);
+            }
+        }
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        Debug.Log("resuming game");
+        gamePaused = false;
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void QuitGame()
+    {
+        //go back to the main screen
+        //reset the inventory
+        if(Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
+
+        SceneManager.LoadScene("MainScreen");
+    }
 
 }

@@ -18,6 +18,7 @@ public class CollectUpClose : MonoBehaviour
     private void Start()
     {
         playerInventory = FindObjectOfType<PlayerInventory>();
+        pickupUI.SetActive(false);
     }
 
     private void Update()

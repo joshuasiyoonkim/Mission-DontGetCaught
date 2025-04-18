@@ -84,4 +84,10 @@ public class PlayerInventory : MonoBehaviour
             }
         }
     }
+
+    public void ResetInventory()
+    {
+        Debug.Log("resetting inventory");
+        items.Clear();
+    }
 }
