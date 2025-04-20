@@ -37233,7 +37233,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7727574263340820684, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
       propertyPath: m_text
-      value: You need to find 2 books before leaving this door
+      value: There are still books remaining in this room!
       objectReference: {fileID: 0}
     - target: {fileID: 7727574263340820684, guid: 5f29fee2e2fbe4113a2b1b985cb7248d, type: 3}
       propertyPath: m_fontAsset

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using StarterAssets;
 
 [System.Serializable]
 public class DialogueSequence
@@ -26,6 +27,8 @@ public class DialogueManager : MonoBehaviour
     public bool isGameOver = false;
     public bool gamePaused = false;
 
+    private FirstPersonController _fpc;
+
     private void Awake()
     {
         isDialogueFinished = false;
@@ -33,6 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        _fpc = FindObjectOfType<FirstPersonController>();
         gameOver.SetActive(false);
         pauseScreen.SetActive(false);
 
@@ -169,6 +173,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
         pauseScreen.SetActive(true);
+        _fpc.allowLook = false;
         Time.timeScale = 0f;
     }
 
@@ -177,6 +182,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("resuming game");
         gamePaused = false;
         pauseScreen.SetActive(false);
+        _fpc.allowLook = true;
         Time.timeScale = 1f;
     }
 
@@ -188,6 +194,7 @@ public class DialogueManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+        PlayerInventory.instance.ResetInventory();
 
         SceneManager.LoadScene("MainScreen");
     }

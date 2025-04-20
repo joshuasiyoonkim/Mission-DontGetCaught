@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Key
   - Collectable
+  - Interactable
+  - KitchenDoor
   layers:
   - Default
   - TransparentFX

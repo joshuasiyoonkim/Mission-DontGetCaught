@@ -32,9 +32,10 @@ public class CollectibleItem : MonoBehaviour
             // Only show interaction if the box is opened
             if (box != null && box.isOpened)
             {
-                if (Input.GetKeyDown(KeyCode.K))
+                ShowPickupUI();
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    ShowPickupUI();
+                    CollectItem();
                 }
             }
         }
@@ -44,22 +45,22 @@ public class CollectibleItem : MonoBehaviour
             HidePickupUI();
         }
 
-        if (pickupUI.activeSelf)
-        {
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                CollectItem();
-            }
-            else if (Input.GetKeyDown(KeyCode.N))
-            {
-                CancelPickup();
-            }
-        }
+        //if (pickupUI.activeSelf)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Y))
+        //    {
+        //        CollectItem();
+        //    }
+        //    else if (Input.GetKeyDown(KeyCode.N))
+        //    {
+        //        CancelPickup();
+        //    }
+        //}
     }
 
     private void ShowPickupUI()
     {
-        pickupText.text = $"Do you want to collect the {itemName}?";
+        pickupText.text = $"Press E to collect the {itemName}?";
         pickupUI.SetActive(true);
     }
 

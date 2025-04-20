@@ -64,7 +64,12 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-	
+
+		//adding this for the pause function
+		[HideInInspector]
+		public bool allowLook = true;
+
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
 #endif
@@ -131,6 +136,8 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
+			if (!allowLook) return;
+
 			// if there is an input
 			if (_input.look.sqrMagnitude >= _threshold)
 			{

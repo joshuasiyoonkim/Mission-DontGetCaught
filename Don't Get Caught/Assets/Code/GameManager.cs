@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     public void CompleteMaze()
     {
         mazeCompleted = true;
-        PlayerInventory.instance.RemoveTwoBooks();
+        //PlayerInventory.instance.RemoveTwoBooks();
         TransitionTo(homeSceneName);
     }
 
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     public void CompleteOutdoor()
     {
         outdoorCompleted = true;
-        PlayerInventory.instance.RemoveTwoBooks();
+        //PlayerInventory.instance.RemoveTwoBooks();
         TransitionTo(homeSceneName);
 
     }

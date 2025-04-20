@@ -57,6 +57,26 @@ public class Door : MonoBehaviour {
                 {
 					if (PlayerInventory.instance.items.ContainsKey("Key"))
 					{
+						//if its the kitchen door, play the dialogue and open the door
+						if (this.CompareTag("KitchenDoor") && dialogueManager != null)
+						{
+							//beginning of the game
+							if(!GameManager.instance.mazeCompleted && !GameManager.instance.outdoorCompleted)
+							{
+								dialogueManager.StartDialogueSequence(2);
+							}
+							//after they completed both of the scenes
+							else if (GameManager.instance.mazeCompleted && GameManager.instance.outdoorCompleted)
+                            {
+								dialogueManager.StartDialogueSequence(4);
+                            }
+							//after they completed one of the scenes
+							else
+							{
+								dialogueManager.StartDialogueSequence(3);
+                            }
+
+						}
 						if (doorStatus)
 						{
 							StartCoroutine(this.moveDoor(doorClosed));
@@ -79,8 +99,16 @@ public class Door : MonoBehaviour {
 					}
 				} else if(currentScene.Equals("MazeScene"))
                 {
-					if(PlayerInventory.instance.items.TryGetValue("Book", out int count) && count == 2)
+					int booksNeeded;
+					if(GameManager.instance.outdoorCompleted)
                     {
+						booksNeeded = 4;
+					} else
+                    {
+						booksNeeded = 2;
+                    }
+					if (PlayerInventory.instance.items.TryGetValue("Book", out int count) && count == booksNeeded)
+					{
 						if (doorStatus)
 						{
 							StartCoroutine(this.moveDoor(doorClosed));
@@ -104,8 +132,17 @@ public class Door : MonoBehaviour {
                 }
 				else if(currentScene.Equals("OutdoorScene"))
                 {
-					if(PlayerInventory.instance.items.TryGetValue("Book", out int count) && count == 2)
-                    {
+					int booksNeeded;
+					if (GameManager.instance.mazeCompleted)
+					{
+						booksNeeded = 4;
+					}
+					else
+					{
+						booksNeeded = 2;
+					}
+					if (PlayerInventory.instance.items.TryGetValue("Book", out int count) && count == booksNeeded)
+					{
 						if (doorStatus)
 						{
 							StartCoroutine(this.moveDoor(doorClosed));
@@ -127,7 +164,6 @@ public class Door : MonoBehaviour {
 						}
 					}
                 }
-
 			}
 		}
 
