@@ -64,6 +64,14 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		// Footstep audio
+		[Header("Footsteps")]
+		public AudioSource footstepSource;
+		public AudioClip[] footstepClips;
+		public float stepRate = 0.5f; // Seconds between steps
+		private float stepTimer = 0f;
+
+
 
 		//adding this for the pause function
 		[HideInInspector]
@@ -203,7 +211,33 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+			// --- FOOTSTEP SOUND LOGIC ---
+			if (Grounded && _input.move != Vector2.zero && _controller.velocity.magnitude > 0.1f)
+			{
+				stepTimer -= Time.deltaTime;
+				if (stepTimer <= 0f)
+				{
+					PlayFootstep();
+					stepTimer = stepRate;
+				}
+			}
+			else
+			{
+				stepTimer = 0f;
+			}
+
 		}
+
+		private void PlayFootstep()
+		{
+			if (footstepClips.Length > 0 && footstepSource != null)
+			{
+				AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
+				footstepSource.PlayOneShot(clip);
+			}
+		}
+
 
 		private void JumpAndGravity()
 		{
