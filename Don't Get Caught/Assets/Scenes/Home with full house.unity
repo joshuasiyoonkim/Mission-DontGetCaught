@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 86481eb1bed390446bcc562332d61a2b, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1711a1f27e31ef942b6c8fab2769d99a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2985,7 +2985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &626227091
 Light:
   m_ObjectHideFlags: 0
@@ -3385,7 +3385,8 @@ MonoBehaviour:
   homeSceneName: Home with full house
   mazeSceneName: MazeScene
   outdoorSceneName: OutdoorScene
-  tunnelSceneName: TunnelScene
+  tunnelSceneName: Dark Tunnel
+  endScreenName: EndScreen
   spawnPoints:
   - fromScene: 
     spawnPoint: {fileID: 800401295}
@@ -6965,7 +6966,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

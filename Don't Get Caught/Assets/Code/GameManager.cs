@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     public string homeSceneName = "Home with full house";
     public string mazeSceneName = "MazeScene";
     public string outdoorSceneName = "OutdoorScene";
-    public string tunnelSceneName = "TunnelScene";
+    public string tunnelSceneName = "Dark Tunnel";
+    public string endScreenName = "EndScreen";
 
     [Header("Home Spawn Points")]
     public List<RoomSpawn> spawnPoints = new List<RoomSpawn>();
@@ -114,5 +115,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("🏆 You Win!");
         // e.g. load a victory screen, quit, whatever
+        TransitionTo(endScreenName);
     }
 }
