@@ -77,6 +77,18 @@ public class Door : MonoBehaviour {
                             }
 
 						}
+						if (this.CompareTag("MasterBedroom") && dialogueManager != null)
+                        {
+							//if you have not completed both maze and outdoor play the dialogue
+							if(GameManager.instance.mazeCompleted && GameManager.instance.outdoorCompleted)
+                            {
+								Debug.Log("completed both, dont play audio");
+                            } else
+                            {
+								Debug.Log("starting dialogue");
+								dialogueManager.StartDialogueSequence(5);
+                            }
+                        }
 						if (doorStatus)
 						{
 							StartCoroutine(this.moveDoor(doorClosed));

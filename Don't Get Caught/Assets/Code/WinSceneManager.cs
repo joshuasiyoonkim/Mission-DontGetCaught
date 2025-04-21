@@ -6,10 +6,12 @@ public class WinSceneManager : MonoBehaviour
     public DoorType doorType;
 
     Collider col;
+    DialogueManager dialogueManager;
 
     void Awake()
     {
         col = GetComponent<Collider>();
+        dialogueManager = FindObjectOfType <DialogueManager>();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -32,5 +32,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OutdoorScene.unity
     guid: e4c8334b557d34bacad73a37d370c87d
+  - enabled: 1
+    path: Assets/Scenes/Dark Tunnel.unity
+    guid: 03f34d6b61cbc4681998bba063a224b2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

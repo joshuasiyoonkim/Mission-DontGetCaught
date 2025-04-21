@@ -149,10 +149,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         //if it is still showing the first dialogue just return
-        if(!isDialogueFinished && index != 0)
-        {
-            return;
-        }
+        //if(!isDialogueFinished && index != 0)
+        //{
+        //    return;
+        //}
 
 
         popUps = dialogueQueue[index].popUps;
